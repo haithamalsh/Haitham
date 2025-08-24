@@ -1,0 +1,64 @@
+spring:
+  # Development Database Configuration
+  datasource:
+    url: jdbc:postgresql://localhost:5432/advancetech_dev
+    username: postgres
+    password: password
+  
+  # Development JPA Configuration
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        use_sql_comments: true
+  
+  # Development Redis Configuration
+  redis:
+    host: localhost
+    port: 6379
+  
+  # Development Security Configuration
+  security:
+    user:
+      name: dev
+      password: dev123
+      roles: ADMIN
+
+# Development Server Configuration
+server:
+  port: 8080
+
+# Development Logging Configuration
+logging:
+  level:
+    com.advancetech: DEBUG
+    org.springframework.security: DEBUG
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} - %msg%n"
+
+# Development JWT Configuration
+jwt:
+  secret: dev-secret-key-change-in-production
+  expiration: 3600000 # 1 hour in milliseconds
+  refresh-expiration: 86400000 # 1 day in milliseconds
+
+# Development File Upload Configuration
+file:
+  upload:
+    max-size: 5MB
+    upload-dir: ./uploads/dev
+
+# Development Management Endpoints
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
